@@ -1,0 +1,78 @@
+  filialleiter  
+----------------
+ Arnold Fischer
+ Bernd Leitner
+ Paul Kreuter
+ Karl Seeberg
+(4 rows)
+
+
+ 2502
+ 2735
+  616
+ 1801
+ 2209
+(992 rows)
+
+
+ 1263
+ 2154
+  346
+ 1509
+  841
+ 3819
+(1286 rows)
+
+
+
+                           bezeichnung                            | count 
+------------------------------------------------------------------+-------
+ Unsinn in einer Datenbank                                        |    77
+ Plakat: Bessere Hochschulmensen (vegetarische Fassung ohne Eier) |    98
+ Utopie "vorbereiteter Student"                                   |    88
+ Kohledruck "Kopieren im Zeichen des Wissens"                     |    85
+ Das liest sowieso niemand                                        |    94
+ Siebdruck "Moderner Student"                                     |    82
+ Jagdtrophäen "Durchgefallene Studenten"                          |    99
+ Stilleben "Der unvorbereitete Dozent"                            |    98
+ Tierknochen (wirklich nicht Pferd!)                              |    87
+ Datenbank "Erfundenes, das vorgibt Kunst zu sein!"               |    85
+ Vorjahresprüfung Datenbanken mit Lösung                          |    92
+ Plakat: Bessere Hochschulmensen (vegetarische Fassung mit Ei)    |   111
+ Jagdtrophäen "Erwischte Plagiatoren"                             |    89
+ Plastikserie "Brüllende Schreie"                                 |   102
+ Tierknochen (nicht Pferd!!)                                      |   108
+ Zeichnung mit Kaffeefleck                                        |    85
+ Plakat: Bessere Hochschulmensen (vegane Fassung)                 |    95
+ Siebdruck "Unter den Talaren"                                    |    74
+ Plakat: Bessere Hochschulmensen (normal)                         |    72
+(19 rows)
+
+
+ kid  |   sum    
+------+----------
+    2 |     2.00
+    3 |     2.00
+    6 |     0.50
+    7 |    19.19
+    8 | 20111.25
+
+ 4232 |    13.02
+ 4235 | 20111.75
+ 4237 |     1.00
+ 4239 |     0.50
+ 4242 |     2.00
+(1414 rows)
+
+
+
+                   bezeichnung                    |               name               
+--------------------------------------------------+----------------------------------
+ Plakat: Bessere Hochschulmensen (vegane Fassung) | Druckwerk Trallala
+ Stilleben "Der unvorbereitete Dozent"            | GenerischerAssistent ohne Idee 1
+ Unsinn in einer Datenbank                        | GenerischerAssistent ohne Idee 2
+(3 rows)
+
+
+
+

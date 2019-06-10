@@ -1,0 +1,121 @@
+List of relations
+ Schema |    Name    | Type  |  Owner   
+--------+------------+-------+----------
+ public | artikel    | table | elehmann
+ public | artikeltyp | table | elehmann
+ public | bietetan   | table | elehmann
+ public | filiale    | table | elehmann
+ public | kauft      | table | elehmann
+ public | kunde      | table | elehmann
+ public | lieferant  | table | elehmann
+(7 rows)
+
+
+
+
+              Table "public.artikel"
+ Column |  Type   | Collation | Nullable | Default 
+--------+---------+-----------+----------+---------
+ aid    | integer |           | not null | 
+ fid    | integer |           |          | 
+ typid  | integer |           | not null | 
+ lid    | integer |           | not null | 
+Indexes:
+    "artikel_pkey" PRIMARY KEY, btree (aid)
+Foreign-key constraints:
+    "artikel_fid_fkey" FOREIGN KEY (fid) REFERENCES filiale(fid)
+    "artikel_lid_fkey" FOREIGN KEY (lid) REFERENCES lieferant(lid)
+    "artikel_typid_fkey" FOREIGN KEY (typid) REFERENCES artikeltyp(typid)
+Referenced by:
+    TABLE "kauft" CONSTRAINT "kauft_aid_fkey" FOREIGN KEY (aid) REFERENCES artikel(aid)
+    
+    
+
+Table "public.artikeltyp"
+   Column    |          Type          | Collation | Nullable | Default 
+-------------+------------------------+-----------+----------+---------
+ typid       | integer                |           | not null | 
+ bezeichnung | character varying(100) |           |          | 
+ preis       | numeric(12,2)          |           |          | 
+Indexes:
+    "artikeltyp_pkey" PRIMARY KEY, btree (typid)
+Referenced by:
+    TABLE "artikel" CONSTRAINT "artikel_typid_fkey" FOREIGN KEY (typid) REFERENCES artikeltyp(typid)
+    TABLE "bietetan" CONSTRAINT "bietetan_typid_fkey" FOREIGN KEY (typid) REFERENCES artikeltyp(typid)
+
+
+
+
+                    Table "public.bietetan"
+    Column     |     Type      | Collation | Nullable | Default 
+---------------+---------------+-----------+----------+---------
+ typid         | integer       |           | not null | 
+ lid           | integer       |           | not null | 
+ angebotspreis | numeric(12,2) |           |          | 
+Indexes:
+    "bietetan_pkey" PRIMARY KEY, btree (typid, lid)
+Foreign-key constraints:
+    "bietetan_lid_fkey" FOREIGN KEY (lid) REFERENCES lieferant(lid)
+    "bietetan_typid_fkey" FOREIGN KEY (typid) REFERENCES artikeltyp(typid)
+
+
+
+                         Table "public.filiale"
+    Column    |          Type          | Collation | Nullable | Default 
+--------------+------------------------+-----------+----------+---------
+ fid          | integer                |           | not null | 
+ filialleiter | character varying(100) |           |          | 
+ adresse      | character varying(100) |           | not null | 
+Indexes:
+    "filiale_pkey" PRIMARY KEY, btree (fid)
+Referenced by:
+    TABLE "artikel" CONSTRAINT "artikel_fid_fkey" FOREIGN KEY (fid) REFERENCES filiale(fid)
+
+
+
+
+                        Table "public.kauft"
+ Column |           Type           | Collation | Nullable | Default 
+--------+--------------------------+-----------+----------+---------
+ aid    | integer                  |           | not null | 
+ kid    | integer                  |           | not null | 
+ datum  | timestamp with time zone |           | not null | 
+Indexes:
+    "kauft_pkey" PRIMARY KEY, btree (aid, kid)
+Foreign-key constraints:
+    "kauft_aid_fkey" FOREIGN KEY (aid) REFERENCES artikel(aid)
+    "kauft_kid_fkey" FOREIGN KEY (kid) REFERENCES kunde(kid)
+
+
+
+
+                         Table "public.kunde"
+     Column     |          Type          | Collation | Nullable | Default 
+----------------+------------------------+-----------+----------+---------
+ kid            | integer                |           | not null | 
+ steuerreferenz | character varying(100) |           |          | 
+Indexes:
+    "kunde_pkey" PRIMARY KEY, btree (kid)
+Referenced by:
+    TABLE "kauft" CONSTRAINT "kauft_kid_fkey" FOREIGN KEY (kid) REFERENCES kunde(kid)
+
+
+
+
+                     Table "public.lieferant"
+ Column |          Type          | Collation | Nullable | Default 
+--------+------------------------+-----------+----------+---------
+ lid    | integer                |           | not null | 
+ name   | character varying(100) |           | not null | 
+ land   | character varying(100) |           | not null | 
+Indexes:
+    "lieferant_pkey" PRIMARY KEY, btree (lid)
+Referenced by:
+    TABLE "artikel" CONSTRAINT "artikel_lid_fkey" FOREIGN KEY (lid) REFERENCES lieferant(lid)
+    TABLE "bietetan" CONSTRAINT "bietetan_lid_fkey" FOREIGN KEY (lid) REFERENCES lieferant(lid)
+
+
+
+
+
+
