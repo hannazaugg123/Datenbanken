@@ -1,2 +1,3 @@
 # Datenbanken
-Datenbanken uni exercises
+
+Datenbanken @ Universität Bern
